@@ -33,6 +33,7 @@ class ToDoScreen extends StatelessWidget {
         body: BlocConsumer<ToDoCubit, ToDoStates>(
           listener: (context, state) {},
           builder: (context, state) {
+            //print(cubit.todoModel?.data?.tasks?.length);
             return Visibility(
               visible: cubit.todoModel?.data?.tasks?.isNotEmpty??true,
               replacement: Center(

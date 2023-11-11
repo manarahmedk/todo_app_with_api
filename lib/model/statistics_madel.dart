@@ -31,7 +31,7 @@ class Data {
   Data({this.New, this.outdated, this.doing, this.compeleted});
 
   Data.fromJson(Map<String, dynamic> json) {
-    New = json['New'];
+    New = json['new'];
     outdated = json['outdated'];
     doing = json['doing'];
     compeleted = json['compeleted'];
@@ -39,7 +39,7 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['New'] = New;
+    data['new'] = New;
     data['outdated'] = outdated;
     data['doing'] = doing;
     data['compeleted'] = compeleted;

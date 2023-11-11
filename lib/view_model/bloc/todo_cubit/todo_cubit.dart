@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:multi_dropdown/multiselect_dropdown.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:todo_app/view_model/bloc/todo_cubit/todo_states.dart';
 import 'package:todo_app/view_model/data/local/shared_keys.dart';
@@ -24,6 +25,17 @@ class ToDoCubit extends Cubit<ToDoStates> {
   StatisticsModel? statistics;
 
   XFile? image;
+
+  int total=0;
+
+  final List<String> statusItems = [
+    'new',
+    'outdated',
+    'doing',
+    'compeleted',
+  ];
+
+  String? statusValue;
 
   static ToDoCubit get(context) => BlocProvider.of<ToDoCubit>(context);
 
@@ -79,7 +91,7 @@ class ToDoCubit extends Cubit<ToDoStates> {
           'start_date':startDateController.text,
           'end_date':endDateController.text,
           if(image != null)'image': await MultipartFile.fromFile(image!.path),
-          'status':'new',
+          'status':statusValue,
         }
       ),
     ).then((value){
@@ -112,7 +124,7 @@ class ToDoCubit extends Cubit<ToDoStates> {
             'start_date':editStartDateController.text,
             'end_date':editEndDateController.text,
             if(image != null)'image': await MultipartFile.fromFile(image!.path),
-            'status':'compeleted',
+            'status':statusValue,
           }
       ),
     ).then((value){
@@ -161,6 +173,7 @@ class ToDoCubit extends Cubit<ToDoStates> {
     ).then((value){
       print(value?.data);
       statistics=StatisticsModel.fromJson(value?.data);
+      total= (statistics?.data?.New??0)+(statistics?.data?.doing??0)+(statistics?.data?.outdated??0)+(statistics?.data?.compeleted??0);
       emit(GetStatisticsSuccessState());
     }).catchError((error){
       if(error is DioException){
@@ -175,6 +188,7 @@ class ToDoCubit extends Cubit<ToDoStates> {
     editDetailsController.text = todoModel?.data?.tasks?[currentIndex].description!??"";
     editStartDateController.text = todoModel?.data?.tasks?[currentIndex].startDate!??"";
     editEndDateController.text = todoModel?.data?.tasks?[currentIndex].endDate!??"";
+    statusValue=todoModel?.data?.tasks?[currentIndex].status!??"";
   }
 
   void clearAllData() {
@@ -182,6 +196,7 @@ class ToDoCubit extends Cubit<ToDoStates> {
     detailsController.clear();
     startDateController.clear();
     endDateController.clear();
+    statusValue='';
     emit(ClearAllDataState());
   }
 

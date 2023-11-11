@@ -3,7 +3,6 @@ import 'package:todo_app/view/screens/login_screen.dart';
 import 'package:todo_app/view/screens/statistics_screen.dart';
 import 'package:todo_app/view/screens/todo_screen.dart';
 import 'package:todo_app/view_model/utils/colors.dart';
-
 import '../../view_model/data/local/shared_keys.dart';
 import '../../view_model/data/local/shared_prefernce.dart';
 import '../../view_model/utils/navigation.dart';
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 5), () {
-      Navigation.pushAndRemove(context,(LocalData.get(key:SharedKeys.token)!= null ?ToDoScreen():LoginScreen()),);
+      Navigation.pushAndRemove(context,(LocalData.get(key:SharedKeys.token)!= null ?StatisticsScreen():LoginScreen()),);
 
     });
   }

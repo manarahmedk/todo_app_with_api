@@ -81,6 +81,15 @@ class TaskBuilder extends StatelessWidget {
                   ),
                   Image.network(taskModel?.image ?? ""),
                 ],
+              const SizedBox(
+                height: 8,
+              ),
+              TextCustom(
+                text: "status : ${taskModel?.status}" ?? "",
+                fontSize: 15,
+                fontWeight: FontWeight.bold,
+                color: AppColors.black,
+              ),
             ],
           ),
         ),

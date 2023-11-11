@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         if (cubit.formKey.currentState!.validate()) {
                           cubit.login().then((value) {
-                            Navigation.pushAndRemove(context, ToDoScreen());
+                            Navigation.pushAndRemove(context, StatisticsScreen());
                           });
                         }
                       },
