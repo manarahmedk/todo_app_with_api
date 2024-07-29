@@ -1,16 +1,14 @@
 # todo_app
 
-A new Flutter project.
+◼ User can Register new account and login .
 
-## Getting Started
+◼ Show Statistisics for tasks status .
 
-This project is a starting point for a Flutter application.
+◼ User can also add new task with an image or without it , edit and delete tasks .
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Using (API integration with Dio package, MVVM Architecture , Cubit State Management, shared 
+preference Local Storage, percent_indicator package, dropdown_button2 package, UI animation 
+with lottie package, image_picker and permission_handler packages to pick images from device )
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+[app video Link] (https://drive.google.com/file/d/1zXz92CbUKFFsB1Zztc1PVMOn6YGDUUlt/view?usp=sharing)
